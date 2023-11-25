@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using ContactsBusinessLayer;
 
 namespace ContactsConsoleApp_Presentation_Layer
@@ -72,13 +73,37 @@ namespace ContactsConsoleApp_Presentation_Layer
                 }
             }
         }
+
+        static void DeleteContact(int ID)
+        {
+            if (Contact.DeleteContact(ID))
+                Console.WriteLine($"Contact with ID {ID} is deleted successfully.");
+            else
+                Console.WriteLine("Contact isn't deleted successfully.");
+        }
+
+        static void ListContacts()
+        {
+            DataTable table = Contact.GetAllContacts();
+
+            Console.WriteLine("Table Data:");
+
+            foreach (DataRow row in table.Rows)
+            {
+                Console.WriteLine($"{row["ContactID"]}, {row["FirstName"]}, {row["LastName"]}");
+            }
+        }
         static void Main(string[] args)
         {
             // FindContact(50);
 
-            //AddNewContact();
+            // AddNewContact();
 
-            UpdateContact(8);
+            // UpdateContact(8);
+
+            //DeleteContact(10);
+
+            ListContacts();
         }
     }
 }

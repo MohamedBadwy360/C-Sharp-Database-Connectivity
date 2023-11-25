@@ -161,5 +161,68 @@ namespace ContactsDataLayer
 
             return (affectedRows > 0);
         }
+
+        public static bool DeleteContact(int ID)
+        {
+            int affectedRows = 0;
+
+            SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString);
+
+            string query = @"delete from Contacts where ContactID = @ContactID;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ContactID", ID);
+
+            try
+            {
+                connection.Open();
+                affectedRows = command.ExecuteNonQuery();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return (affectedRows > 0);
+        }
+
+        public static DataTable GetAllContacts()
+        {
+            DataTable table = new DataTable();
+
+            SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString);
+
+            string query = "select * from Contacts;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    table.Load(reader);
+                }
+
+                reader.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close(); 
+            }
+
+            return table;
+        }
     }
 }

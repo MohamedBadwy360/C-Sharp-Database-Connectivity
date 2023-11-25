@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using ContactsDataLayer;
 
 namespace ContactsBusinessLayer
@@ -77,7 +78,6 @@ namespace ContactsBusinessLayer
                 return null;
             }
         }
-
         public bool Save()
         {
             switch(Mode)
@@ -97,6 +97,14 @@ namespace ContactsBusinessLayer
             }
 
             return false;
+        }
+        public static bool DeleteContact(int ID)
+        {
+            return ContactDataAccess.DeleteContact(ID);
+        }
+        public static DataTable GetAllContacts()
+        {
+            return ContactDataAccess.GetAllContacts();
         }
     }
 }
