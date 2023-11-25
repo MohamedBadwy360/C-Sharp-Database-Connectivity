@@ -101,6 +101,24 @@ namespace ContactsConsoleApp_Presentation_Layer
             else
                 Console.WriteLine($"Contact with ID {ID} is not Exist.");
         }
+
+        static void Find(string CountryName)
+        {
+            Countries country = Countries.Find(CountryName);
+
+            if (country != null)
+                Console.WriteLine($"ID : {country.CountryID}, Name : {country.CountryName}");
+            else
+                Console.WriteLine($"Country With Name '{CountryName}' is not found.");
+        }
+
+        static void IsCountryExist(string CountryName)
+        {
+            if (Countries.IsCountryExist(CountryName))
+                Console.WriteLine($"Country '{CountryName}' is Exist'");
+            else
+                Console.WriteLine($"Country '{CountryName}' is not Exist'");
+        }
         static void Main(string[] args)
         {
             // FindContact(50);
@@ -113,8 +131,12 @@ namespace ContactsConsoleApp_Presentation_Layer
 
             //ListContacts();
 
-            IsContactExist(1);
-            IsContactExist(10);
+            //IsContactExist(1);
+            //IsContactExist(10);
+
+            //Find("Egypt");
+
+            IsCountryExist("Egypt");
         }
     }
 }

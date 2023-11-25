@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net;
+using System.Security.Policy;
 
 namespace ContactsDataLayer
 {
-    public class ContactDataAccess
+    public static class ContactDataAccess
     {
         public static bool GetContactInfoByID(int ID, ref string FirstName, ref string LastName,
             ref string Email, ref string Phone, ref string Address, ref DateTime DateOfBirth,
@@ -255,6 +257,6 @@ namespace ContactsDataLayer
             }
 
             return isExist;
-        }
+        }      
     }
 }
