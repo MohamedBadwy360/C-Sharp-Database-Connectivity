@@ -41,6 +41,7 @@ namespace _14.DataTable_Delete_Rows
             {
                 Console.WriteLine($"ID: {row["ID"]}\t Name: {row["Name"]}\t Country: {row["Country"]}\t Salary: {row["Salary"]}\t Date: {row["Date"]}");
             }
+
         }
     }
 }
