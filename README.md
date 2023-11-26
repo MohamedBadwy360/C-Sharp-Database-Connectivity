@@ -9,3 +9,9 @@ The Course is about `C# & Database Connectivity`.
 ---
 
 **Tools:** `Visual Studio`, `Visual Studio Code`, `Microsoft SQL Server`.
+
+---
+
+## `Certificate`
+
+![Certificate](/18%20-%20C%23%20%26%20Database%20Connectivity.jpg)
